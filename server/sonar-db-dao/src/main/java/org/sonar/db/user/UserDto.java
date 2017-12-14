@@ -209,7 +209,7 @@ public class UserDto {
     return homepageType;
   }
 
-  public UserDto setHomepageType(String homepageType) {
+  public UserDto setHomepageType(@Nullable String homepageType) {
     this.homepageType = homepageType;
     return this;
   }
@@ -219,7 +219,7 @@ public class UserDto {
     return homepageValue;
   }
 
-  public UserDto setHomepageValue(String homepageValue) {
+  public UserDto setHomepageValue(@Nullable String homepageValue) {
     this.homepageValue = homepageValue;
     return this;
   }

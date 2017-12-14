@@ -224,4 +224,27 @@ public class CurrentActionTest {
     return ws.newRequest().executeProtobuf(CurrentWsResponse.class);
   }
 
+  @Test
+  public void fail_with_ISE_when_user_homepage_project_does_not_exist_in_db() {
+    UserDto user = db.users().insertUser(u -> u.setHomepageType("PROJECT").setHomepageValue("not-existing-project-uuid"));
+    userSessionRule.logIn(user.getLogin());
+
+    expectedException.expect(IllegalStateException.class);
+    expectedException.expectMessage("Unknown component 'not-existing-project-uuid' for homepageValue");
+
+    call();
+  }
+
+  @Test
+  public void fail_with_ISE_when_user_homepage_organization_does_not_exist_in_db() {
+    UserDto user = db.users().insertUser(u -> u.setHomepageType("ORGANIZATION").setHomepageValue("not-existing-organization-uuid"));
+    userSessionRule.logIn(user.getLogin());
+
+    expectedException.expect(IllegalStateException.class);
+    expectedException.expectMessage("Unknown organization 'not-existing-organization-uuid' for homepageValue");
+
+    call();
+  }
+
+
 }

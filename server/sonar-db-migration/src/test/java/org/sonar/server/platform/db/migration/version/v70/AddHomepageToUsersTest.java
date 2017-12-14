@@ -45,7 +45,7 @@ public class AddHomepageToUsersTest {
   public void column_is_added_to_table() throws SQLException {
     underTest.execute();
 
-    dbTester.assertColumnDefinition("users", "homepage_type", VARCHAR, 15, true);
+    dbTester.assertColumnDefinition("users", "homepage_type", VARCHAR, 40, true);
     dbTester.assertColumnDefinition("users", "homepage_value", VARCHAR, 40, true);
   }
 

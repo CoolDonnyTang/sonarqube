@@ -39,7 +39,7 @@ public class AddHomepageToUsers extends DdlChange {
       .addColumn(newVarcharColumnDefBuilder()
         .setColumnName("homepage_type")
         .setIsNullable(true)
-        .setLimit(15)
+        .setLimit(40)
         .build())
       .addColumn(newVarcharColumnDefBuilder()
         .setColumnName("homepage_value")
